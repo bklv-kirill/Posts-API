@@ -1,0 +1,5 @@
+FROM composer
+
+WORKDIR /var/composer/src
+
+CMD ["composer"]

@@ -1,0 +1,91 @@
+version: "3.8"
+
+services:
+  nginx:
+    image: nginx
+    container_name: nginx-container
+    expose:
+      - 80/tcp
+    ports:
+      - 80:80
+    restart: always
+    volumes:
+      - ./tmp/configs/nginx:/etc/nginx/conf.d:ro
+      - ./src:/var/www/posts-api:ro
+    depends_on:
+      - php
+      - mysql
+      - redis
+      - phpmyadmin
+    networks:
+      - posts-api-network
+
+  php:
+    build:
+      context: ./dockerfiles/php
+      dockerfile: dockerfile
+    container_name: php-container
+    expose:
+      - 9000/tcp
+    ports:
+      - 9000:9000
+    restart: always
+    volumes:
+      - ./src:/var/www/posts-api
+    networks:
+      - posts-api-network
+
+  composer:
+    build:
+      context: ./dockerfiles/composer
+      dockerfile: dockerfile
+    container_name: composer-container
+    volumes:
+      - ./src:/var/composer/src
+    networks:
+      - posts-api-network
+
+  mysql:
+    image: mysql
+    container_name: mysql-container
+    expose:
+      - 3306/tcp
+    ports:
+      - 3306:3306
+    restart: always
+    volumes:
+      - ./databases/mysql:/var/lib/mysql
+    env_file:
+      - mysql.env
+    networks:
+      - posts-api-network
+
+  redis:
+    image: redis
+    container_name: redis-container
+    expose:
+      - 6379/tcp
+    ports:
+      - 6379:6379
+    restart: always
+    networks:
+      - posts-api-network
+
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: phpmyadmin-container
+    expose:
+      - 80/tcp
+    ports:
+      - 8080:80
+    restart: always
+    env_file:
+      - phpmyadmin.env
+    networks:
+      - posts-api-network
+
+
+networks:
+  posts-api-network:
+    name: posts-api-network
+    driver: bridge
