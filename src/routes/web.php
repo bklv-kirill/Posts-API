@@ -14,6 +14,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $posts = \App\Models\Post::getAllFromCache();
-    return view('welcome');
+    return view('instruction');
 });

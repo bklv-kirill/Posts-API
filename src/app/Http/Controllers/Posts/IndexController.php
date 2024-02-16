@@ -17,7 +17,7 @@ class IndexController extends Controller
     {
         $queryParams = $request->validated();
 
-        if (array_count_values($queryParams)) $posts = $service->getFilteredData($queryParams);
+        if (count($queryParams)) $posts = $service->getFilteredData($queryParams);
         else $posts = Post::getAllFromCache();
 
         return PostResource::collection($posts);
