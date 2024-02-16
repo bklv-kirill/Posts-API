@@ -4,7 +4,7 @@ namespace App\Http\Requests\Posts;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PostRequest extends FormRequest
+class IndexRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,10 +22,10 @@ class PostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "id" => ["nullable", "string"],
+            "id" => ["nullable", "string", "max:255"],
             "title" => ["nullable", "string", "max:255"],
             "content" => ["nullable", "string", "max:255"],
-            "order_by" => ["nullable", "string"],
+            "order_by" => ["nullable", "string", "max:255"],
         ];
     }
 }

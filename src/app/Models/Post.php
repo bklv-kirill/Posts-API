@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Http\Filters\Traits\Filterable;
+use App\Models\Traits\Cacheable;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -16,6 +17,7 @@ class Post extends Model
 {
     use HasFactory;
     use Filterable;
+    use Cacheable;
 
     protected $fillable = [
         "title",
@@ -31,14 +33,8 @@ class Post extends Model
     {
         return $this->belongsToMany(Category::class, "category_posts");
     }
-
     public function comments(): HasMany
     {
         return $this->hasMany(Comment::class);
-    }
-
-    public static function getAllFromCache(): Collection
-    {
-        return Cache::rememberForever("posts:all", fn () => self::query()->with(["user", "categories", "comments" => fn (Builder $builder) => $builder->with(["user"])])->latest("id")->get());
     }
 }
