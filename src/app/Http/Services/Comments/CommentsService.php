@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Collection;
 
 class CommentsService
 {
-    public function filter(array $queryParams): Collection
+    public function getFilteredData(array $queryParams): Collection
     {
         if (!isset($queryParams["order_by"])) $queryParams["order_by"] = "id";
 

@@ -17,4 +17,13 @@ class PostsFilter extends AbstrackFilter
         $builder->where("content", "LIKE", "%{$content}%");
     }
 
+    public static function owner_id(Builder $builder, string $owner_id): void
+    {
+        $builder->where("user_id", $owner_id);
+    }
+
+    public static function category(Builder $builder, string $category): void
+    {
+        $builder->whereHas("categories", fn ($builder) => $builder->where("name", "LIKE", "%{$category}%"));
+    }
 }
