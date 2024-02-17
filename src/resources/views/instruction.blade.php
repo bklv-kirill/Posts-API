@@ -23,21 +23,21 @@
                 </li>
                 <li><span class="text-primary">Route:</span> <span class="text-success">/posts?<span
                             class="text-danger">title=example</span></span> -> Get
-                    post where <span class="text-danger">'title' <span class="text-success">like</span> 'example'</span>;
+                    post where <span class="text-danger">'title' <span class="text-success">LIKE</span> 'example'</span>;
                 </li>
                 <li><span class="text-primary">Route:</span> <span class="text-success">/posts?<span
                             class="text-danger">content=example</span></span> -> Get
                     post where <span class="text-danger">'content' <span
-                            class="text-success">like</span> 'example'</span>;
+                            class="text-success">LIKE</span> 'example'</span>;
                 </li>
                 <hr>
                 <li><span class="text-primary">Route:</span> <span class="text-success">/posts?</span><span
                         class="text-danger">title=Title Example</span>&<span
                         class="text-danger">content=Content Example</span>&<span
                         class="text-danger">order_by=date</span> -> Get
-                    post where <span class="text-danger">'title' <span class="text-success">like</span> 'Title Example'</span>
+                    post where <span class="text-danger">'title' <span class="text-success">LIKE</span> 'Title Example'</span>
                     and <span class="text-danger">'content' <span
-                            class="text-success">like</span> 'Content Example'</span> order by desc <span
+                            class="text-success">LIKE</span> 'Content Example'</span> order by desc <span
                         class="text-danger">'date'</span>;
                 </li>
             </ul>
@@ -55,13 +55,39 @@
                 <li><span class="text-primary">Route:</span> <span class="text-success">/categories?<span
                             class="text-danger">name=example</span></span> -> Get
                     category where <span class="text-danger">'name' <span
-                            class="text-success">like</span> 'example'</span>;
+                            class="text-success">LIKE</span> 'example'</span>;
                 </li>
                 <hr>
                 <li><span class="text-primary">Route:</span> <span class="text-success">/categories?</span><span
                         class="text-danger">name=Name Example</span>&<span
                         class="text-danger">order_by=date</span> -> Get
-                    category where <span class="text-danger">'name' <span class="text-success">like</span> 'Name Example'</span>
+                    category where <span class="text-danger">'name' <span class="text-success">LIKE</span> 'Name Example'</span>
+                    and order by desc <span
+                        class="text-danger">'date'</span>;
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <hr>
+    <h2>Comments:</h2>
+    <ul class="fs-3">
+        <li>
+            GET
+            <ul>
+                <li><span class="text-primary">Route:</span> <span class="text-success">/comments</span> -> Get ALL
+                    comments
+                    (order by desc <span class="text-danger">'id'</span>);
+                </li>
+                <li><span class="text-primary">Route:</span> <span class="text-success">/comments?<span
+                            class="text-danger">content=example</span></span> -> Get
+                    comment where <span class="text-danger">'content' <span
+                            class="text-success">LIKE</span> 'example'</span>;
+                </li>
+                <hr>
+                <li><span class="text-primary">Route:</span> <span class="text-success">/comments?</span><span
+                        class="text-danger">content=Content Example</span>&<span
+                        class="text-danger">order_by=date</span> -> Get
+                    category where <span class="text-danger">'content' <span class="text-success">LIKE</span> 'Content Example'</span>
                     and order by desc <span
                         class="text-danger">'date'</span>;
                 </li>
@@ -89,15 +115,15 @@
                 </li>
             </ul>
         </li>
-<li>
-    Selection by <span class="text-danger">'id'</span>
-    <ul>
-        <li><span class="text-primary">Route:</span> <span class="text-success">/posts?<span
-                    class="text-danger">id=1</span></span> -> Get
-            post where <span class="text-danger">'id' = 1</span>;
+        <li>
+            Selection by <span class="text-danger">'id'</span>
+            <ul>
+                <li><span class="text-primary">Route:</span> <span class="text-success">/posts?<span
+                            class="text-danger">id=1</span></span> -> Get
+                    post where <span class="text-danger">'id' = 1</span>;
+                </li>
+            </ul>
         </li>
-    </ul>
-</li>
     </ul>
 </div>
 
