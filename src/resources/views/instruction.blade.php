@@ -80,10 +80,44 @@
                             class="text-danger">owner_id=1</span></span> -> Get
                     comment where <span class="text-danger">'owner' <span
                             class="text-success">have</span> 'id' = 1</span>;
-                </li>                <li><span class="text-primary">Route:</span> <span class="text-success">/comments?<span
+                </li>
+                <li><span class="text-primary">Route:</span> <span class="text-success">/comments?<span
                             class="text-danger">post_id=1</span></span> -> Get
                     comment where <span class="text-danger">'post' <span
                             class="text-success">have</span> 'id' = 1</span>;
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <h2>User:</h2>
+    <ul class="fs-3">
+        <li>
+            POST
+            <ul>
+                <li><span class="text-primary">Route:</span> <span class="text-success">/register</span>:
+                    <ul>
+                        <li><span class="text-danger">name:</span><span
+                                class="text-success"> Nullable, String, Max:255</span></li>
+                        <li><span class="text-danger">email:</span><span class="text-success"> Required, Email, Min:3, Max:255</span>
+                        </li>
+                        <li><span class="text-danger">password:</span><span class="text-success"> Required, String, Confirmed, Min:8</span>
+                        </li>
+                        <li><span class="text-danger">password_confirmation:</span><span
+                                class="text-success"> Required</span></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>
+            POST
+            <ul>
+                <li><span class="text-primary">Route:</span> <span class="text-success">/login</span>:
+                    <ul>
+                        <li><span class="text-danger">email:</span><span class="text-success"> Required, Email, Exists:users</span>
+                        </li>
+                        <li><span class="text-danger">password:</span><span class="text-success"> Required, String, Min:8</span>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </li>
