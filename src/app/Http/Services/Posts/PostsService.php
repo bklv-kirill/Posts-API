@@ -12,8 +12,8 @@ class PostsService
     {
         if (!isset($queryParams["order_by"])) $queryParams["order_by"] = "id";
 
-        $filters = new PostsFilter($queryParams);
+        $filter = new PostsFilter($queryParams);
 
-        return Post::filter($filters);
+        return Post::filter($filter);
     }
 }

@@ -12,8 +12,8 @@ class CategoriesService
     {
         if (!isset($queryParams["order_by"])) $queryParams["order_by"] = "id";
 
-        $filters = new CategoriesFilter($queryParams);
+        $filter = new CategoriesFilter($queryParams);
 
-        return Category::filter($filters);
+        return Category::filter($filter);
     }
 }
