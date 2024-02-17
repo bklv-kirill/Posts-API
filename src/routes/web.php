@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+//    $posts = \App\Models\Post::getAllFromCache("posts", ["user", "categories", "comments" => fn (Builder $builder) => $builder->with(["user"])]);
+//    $categories = \App\Models\Category::getAllFromCache("categories", ["posts"]);
+//    $comments = \App\Models\Comment::getAllFromCache("comments", ["user", "post"] );
+
     return view('instruction');
 });
 

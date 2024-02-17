@@ -20,10 +20,6 @@ abstract class AbstrackFilter implements FilterInterface
         return $this->callBacks;
     }
 
-    public static function id(Builder $builder, string $id): void
-    {
-        $builder->find($id);
-    }
     public static function order_by(Builder $builder, string $order_by): void
     {
         switch ($order_by){
