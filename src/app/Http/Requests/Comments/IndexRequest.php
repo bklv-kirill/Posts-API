@@ -25,6 +25,8 @@ class IndexRequest extends FormRequest
             "id" => ["nullable", "string", "max:255"],
             "order_by" => ["nullable", "string", "max:255"],
             "content" => ["nullable", "string", "max:255"],
+            "owner_id" => ["nullable", "string", "max:255"],
+            "post_id" => ["nullable", "string", "max:255"],
         ];
     }
 }

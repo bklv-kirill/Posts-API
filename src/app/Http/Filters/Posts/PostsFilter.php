@@ -24,6 +24,6 @@ class PostsFilter extends AbstrackFilter
 
     public static function category(Builder $builder, string $category): void
     {
-        $builder->whereHas("categories", fn ($builder) => $builder->where("name", "LIKE", "%{$category}%"));
+        $builder->whereHas("categories", fn (Builder $builder) => $builder->where("name", "LIKE", "%{$category}%"));
     }
 }
