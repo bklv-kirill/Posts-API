@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Categories;
+namespace App\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class IndexRequest extends FormRequest
+class LoginRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,8 +22,8 @@ class IndexRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "name" => ["nullable", "string", "max:255"],
-            "order_by" => ["nullable", "string", "in:id,date"],
+            "email" => ["required", "email", "exists:users"],
+            "password" => ["required", "string", "min:8"],
         ];
     }
 }

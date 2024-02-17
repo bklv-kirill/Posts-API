@@ -22,7 +22,7 @@ class IndexRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "order_by" => ["nullable", "string", "max:255"],
+            "order_by" => ["nullable", "string", "in:id,date"],
             "content" => ["nullable", "string", "max:255"],
             "owner_id" => ["nullable", "string", "max:255"],
             "post_id" => ["nullable", "string", "max:255"],
