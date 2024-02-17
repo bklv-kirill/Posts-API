@@ -30,15 +30,17 @@
                     post where <span class="text-danger">'content' <span
                             class="text-success">LIKE</span> 'example'</span>;
                 </li>
-                <hr>
-                <li><span class="text-primary">Route:</span> <span class="text-success">/posts?</span><span
-                        class="text-danger">title=Title Example</span>&<span
-                        class="text-danger">content=Content Example</span>&<span
-                        class="text-danger">order_by=date</span> -> Get
-                    post where <span class="text-danger">'title' <span class="text-success">LIKE</span> 'Title Example'</span>
-                    and <span class="text-danger">'content' <span
-                            class="text-success">LIKE</span> 'Content Example'</span> order by desc <span
-                        class="text-danger">'date'</span>;
+                <li><span class="text-primary">Route:</span> <span class="text-success">/posts?<span
+                            class="text-danger">owner_id=1</span></span> -> Get
+                    post where <span class="text-danger">'owner' <span
+                            class="text-success">have</span> 'id' = 1</span>;
+                </li>
+                <li><span class="text-primary">Route:</span> <span class="text-success">/posts?<span
+                            class="text-danger">category=example</span></span> -> Get
+                    post where <span class="text-danger">'category' <span
+                            class="text-success">have</span> 'name' </span><span
+                        class="text-success">LIKE </span><span
+                        class="text-danger">'example'</span> ;
                 </li>
             </ul>
         </li>
@@ -57,18 +59,9 @@
                     category where <span class="text-danger">'name' <span
                             class="text-success">LIKE</span> 'example'</span>;
                 </li>
-                <hr>
-                <li><span class="text-primary">Route:</span> <span class="text-success">/categories?</span><span
-                        class="text-danger">name=Name Example</span>&<span
-                        class="text-danger">order_by=date</span> -> Get
-                    category where <span class="text-danger">'name' <span class="text-success">LIKE</span> 'Name Example'</span>
-                    and order by desc <span
-                        class="text-danger">'date'</span>;
-                </li>
             </ul>
         </li>
     </ul>
-    <hr>
     <h2>Comments:</h2>
     <ul class="fs-3">
         <li>
@@ -83,13 +76,14 @@
                     comment where <span class="text-danger">'content' <span
                             class="text-success">LIKE</span> 'example'</span>;
                 </li>
-                <hr>
-                <li><span class="text-primary">Route:</span> <span class="text-success">/comments?</span><span
-                        class="text-danger">content=Content Example</span>&<span
-                        class="text-danger">order_by=date</span> -> Get
-                    category where <span class="text-danger">'content' <span class="text-success">LIKE</span> 'Content Example'</span>
-                    and order by desc <span
-                        class="text-danger">'date'</span>;
+                <li><span class="text-primary">Route:</span> <span class="text-success">/comments?<span
+                            class="text-danger">owner_id=1</span></span> -> Get
+                    comment where <span class="text-danger">'owner' <span
+                            class="text-success">have</span> 'id' = 1</span>;
+                </li>                <li><span class="text-primary">Route:</span> <span class="text-success">/comments?<span
+                            class="text-danger">post_id=1</span></span> -> Get
+                    comment where <span class="text-danger">'post' <span
+                            class="text-success">have</span> 'id' = 1</span>;
                 </li>
             </ul>
         </li>
