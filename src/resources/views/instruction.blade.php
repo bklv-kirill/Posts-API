@@ -112,8 +112,8 @@
         <li>
             Selection by <span class="text-danger">'id'</span>
             <ul>
-                <li><span class="text-primary">Route:</span> <span class="text-success">/posts?<span
-                            class="text-danger">id=1</span></span> -> Get
+                <li><span class="text-primary">Route:</span> <span class="text-success">/posts/<span
+                            class="text-danger">1</span></span> -> Get
                     post where <span class="text-danger">'id' = 1</span>;
                 </li>
             </ul>
