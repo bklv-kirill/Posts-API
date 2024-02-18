@@ -44,7 +44,50 @@
                 </li>
             </ul>
         </li>
+        <li>
+            POST
+            <ul>
+                <li><span class="text-primary">Route:</span> <span class="text-success">/posts</span>:
+                    <ul>
+                        <li><span class="text-danger">title:</span><span
+                                class="text-success"> Required, String, Min:3, Max:255</span>;</li>
+                        <li><span class="text-danger">content:</span><span class="text-success"> Nullable, String, Min:3, Max:10000</span>;
+                        </li>
+                        <li><span class="text-danger">categories:</span><span
+                                class="text-success"> Nullable, Array</span>;
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>
+            DELETE
+            <ul>
+                <li><span class="text-primary">Route:</span> <span class="text-success">/posts/</span><span
+                        class="text-danger">post_id</span>;
+                </li>
+            </ul>
+        </li>
+        <li>
+            PATCH
+            <ul>
+                <li><span class="text-primary">Route:</span> <span class="text-success">/posts/</span><span
+                        class="text-danger">post_id</span>:
+                    <ul>
+                        <li><span class="text-danger">title:</span><span
+                                class="text-success"> Nullable, String, Min:3, Max:255</span>;
+                        </li>
+                        <li><span class="text-danger">content:</span><span class="text-success"> Nullable, String, Min:3, Max:10000</span>;
+                        </li>
+                        <li><span class="text-danger">categories:</span><span
+                                class="text-success"> Nullable, Array</span>;
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
     </ul>
+    <hr>
     <h2>Categories:</h2>
     <ul class="fs-3">
         <li>
@@ -62,6 +105,7 @@
             </ul>
         </li>
     </ul>
+    <hr>
     <h2>Comments:</h2>
     <ul class="fs-3">
         <li>
@@ -89,6 +133,7 @@
             </ul>
         </li>
     </ul>
+    <hr>
     <h2>User:</h2>
     <ul class="fs-3">
         <li>
@@ -97,13 +142,13 @@
                 <li><span class="text-primary">Route:</span> <span class="text-success">/register</span>:
                     <ul>
                         <li><span class="text-danger">name:</span><span
-                                class="text-success"> Nullable, String, Max:255</span></li>
-                        <li><span class="text-danger">email:</span><span class="text-success"> Required, Email, Min:3, Max:255</span>
+                                class="text-success"> Nullable, String, Max:255</span>;</li>
+                        <li><span class="text-danger">email:</span><span class="text-success"> Required, Email, Min:3, Max:255</span>;
                         </li>
-                        <li><span class="text-danger">password:</span><span class="text-success"> Required, String, Confirmed, Min:8</span>
+                        <li><span class="text-danger">password:</span><span class="text-success"> Required, String, Confirmed, Min:8</span>;
                         </li>
                         <li><span class="text-danger">password_confirmation:</span><span
-                                class="text-success"> Required</span></li>
+                                class="text-success"> Required</span>;</li>
                     </ul>
                 </li>
             </ul>
@@ -113,9 +158,9 @@
             <ul>
                 <li><span class="text-primary">Route:</span> <span class="text-success">/login</span>:
                     <ul>
-                        <li><span class="text-danger">email:</span><span class="text-success"> Required, Email, Exists:users</span>
+                        <li><span class="text-danger">email:</span><span class="text-success"> Required, Email, Exists:users</span>;
                         </li>
-                        <li><span class="text-danger">password:</span><span class="text-success"> Required, String, Min:8</span>
+                        <li><span class="text-danger">password:</span><span class="text-success"> Required, String, Min:8</span>;
                         </li>
                     </ul>
                 </li>
