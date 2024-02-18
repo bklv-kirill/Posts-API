@@ -20,7 +20,25 @@ class Category extends Model
 
     public function posts(): BelongsToMany
     {
-        return  $this->belongsToMany(Post::class, "category_posts");
+        return $this->belongsToMany(Post::class, "category_posts");
     }
 
+    public function deletePosts()
+    {
+        CategoryPost::query()->where("category_id", $this->id)->delete();
+    }
+    public function updatePosts(array $posts)
+    {
+        $this->deletePosts();
+        $this->addPosts($posts);
+    }
+    public function addPosts(array $posts): void
+    {
+        foreach ($posts as $post) {
+            CategoryPost::query()->create([
+                "category_id" => $this->id,
+                "post_id" => $post,
+            ]);
+        }
+    }
 }

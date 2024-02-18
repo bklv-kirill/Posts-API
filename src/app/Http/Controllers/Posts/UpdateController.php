@@ -19,7 +19,7 @@ class UpdateController extends Controller
         $postDate = $request->validated();
         $post = Post::query()->find($post_id);
 
-        if ($response = $service->postExistsAndOwnerCheck($post))
+        if ($response = $service->postExistsAndUserIsOwnerCheck($post))
             return $response;
 
         $post->update($postDate);

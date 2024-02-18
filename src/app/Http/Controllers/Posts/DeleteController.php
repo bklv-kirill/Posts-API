@@ -16,7 +16,7 @@ class DeleteController extends Controller
     {
         $post = Post::query()->find($post_id);
 
-        if ($response = $service->postExistsAndOwnerCheck($post))
+        if ($response = $service->postExistsAndUserIsOwnerCheck($post))
             return $response;
 
         $post->deleteCategories();

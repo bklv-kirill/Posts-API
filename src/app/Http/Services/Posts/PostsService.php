@@ -19,7 +19,7 @@ class PostsService
         return Post::filter($filter);
     }
 
-    public function postExistsAndOwnerCheck(Post|null $post): Response|bool
+    public function postExistsAndUserIsOwnerCheck(Post|null $post): Response|bool
     {
         if (!$post)
             return response(["status" => false, "error" => "Post not found"], 400);

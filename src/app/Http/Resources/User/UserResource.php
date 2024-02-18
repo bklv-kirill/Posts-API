@@ -14,12 +14,11 @@ class UserResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $abilities = $this->is_admin ? ["create", "delete"] : ["create"];
         return [
             "id" => $this->id,
             "name" => $this->name,
             "email" => $this->email,
-            "token" => $this->createToken("token", $abilities, now()->addHour(24*7))->plainTextToken,
+            "token" => $this->createToken("token", ["*"], now()->addHour(24*7))->plainTextToken,
         ];
     }
 }

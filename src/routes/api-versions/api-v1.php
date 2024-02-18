@@ -18,6 +18,11 @@ Route::prefix("v1")->group(function () {
 
     Route::get("/categories", \App\Http\Controllers\Categories\IndexController::class);
     Route::get("/categories/{category_id}", \App\Http\Controllers\Categories\ShowController::class);
+    Route::middleware("auth:sanctum")->group(function () {
+        Route::post("/categories", \App\Http\Controllers\Categories\StoreController::class);
+        Route::delete("/categories/{category_id}", \App\Http\Controllers\Categories\DeleteController::class);
+        Route::patch("/categories/{category_id}", \App\Http\Controllers\Categories\UpdateController::class);
+    });
 
     Route::get("/comments", \App\Http\Controllers\Comments\IndexController::class);
     Route::get("/comments/{comment_id}", \App\Http\Controllers\Comments\ShowController::class);
