@@ -13,8 +13,8 @@ class ShowController extends Controller
      */
     public function __invoke($comment_id)
     {
-        $comment = Comment::getFromCache($comment_id, "comments", ["user", "post"]);
+        $comment = Comment::query()->with(["user", "post"])->find($comment_id);
 
-        return $comment ? new CommentResource($comment) : ["date" => []];
+        return $comment ? new CommentResource($comment) : response(["date" => []], 200);
     }
 }

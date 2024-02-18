@@ -2,8 +2,11 @@
 
 namespace App\Models\Traits;
 
+use App\Models\Category;
+use App\Models\Comment;
+use App\Models\Post;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 
 trait Cacheable
@@ -13,10 +16,14 @@ trait Cacheable
         return Cache::rememberForever("{$table}:all", fn () => self::query()->with($relations)->latest("id")->get());
     }
 
-    public static function getFromCache($id, string $table, array $relations): Model | null
+    public static function cacheUpdate(): void
     {
-        $model = self::query()->with($relations)->find($id);
+        $posts = Post::query()->with(["user", "categories", "comments" => fn (Builder $builder) => $builder->with(["user"])])->latest("id")->get();
+        $categories = Category::query()->with(["posts"])->latest("id")->get();
+        $comments = Comment::query()->with(["user", "post"])->latest("id")->get();
 
-        return $model ? Cache::rememberForever("{$table}:{$id}", fn () => $model) : $model;
+        Cache::forever("posts:all", $posts);
+        Cache::forever("categories:all", $categories);
+        Cache::forever("comments:all", $comments);
     }
 }

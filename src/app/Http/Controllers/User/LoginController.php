@@ -7,7 +7,6 @@ use App\Http\Requests\User\LoginRequest;
 use App\Http\Resources\User\UserResource;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\ValidationException;
 
 
 class LoginController extends Controller
@@ -21,9 +20,6 @@ class LoginController extends Controller
 
         $user = User::query()->where("email", $userData["email"])->first();
 
-        if (!Hash::check($userData["password"], $user->password))
-            throw ValidationException::withMessages(["password" => "Invalid password"]);
-
-        return new UserResource($user);
+        return Hash::check($userData["password"], $user->password) ? new UserResource($user) : response(["status" => false, "error" => "Invalid password"], 401);
     }
 }

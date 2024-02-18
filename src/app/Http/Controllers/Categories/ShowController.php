@@ -13,8 +13,8 @@ class ShowController extends Controller
      */
     public function __invoke($category_id)
     {
-        $category = Category::getFromCache($category_id, "categories", ["posts"]);
+        $category = Category::query()->with( ["posts"])->find($category_id);
 
-        return $category ? new CategoryResource($category) : ["date" => []];
+        return $category ? new CategoryResource($category) : response(["date" => []], 200);
     }
 }

@@ -37,4 +37,24 @@ class Post extends Model
     {
         return $this->hasMany(Comment::class);
     }
+
+    public function deleteCategories(): void
+    {
+        CategoryPost::query()->where("post_id", $this->id)->delete();
+    }
+
+    public function updateCategories(array $categories): void
+    {
+        $this->deleteCategories();
+        $this->addCategories($categories);
+    }
+    public function addCategories(array $categories): void
+    {
+        foreach ($categories as $category) {
+            CategoryPost::query()->create([
+                "category_id" => $category,
+                "post_id" => $this->id,
+            ]);
+        }
+    }
 }
