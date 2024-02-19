@@ -20,9 +20,11 @@ class UpdateController extends Controller
 
         $category = Category::query()->find($category_id);
 
-        if ($response = $service->categoryExistsAndIUserIsAdminCheck($category))
+        if ($response = $service->categoryExistsAndUserIsAdminCheck($category))
             return $response;
 
+        $category->update($categoryData);
+        
         if (isset($categoryData["posts"]))
             $category->updatePosts($categoryData["posts"]);
 

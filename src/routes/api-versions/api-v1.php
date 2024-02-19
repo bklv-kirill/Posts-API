@@ -26,4 +26,9 @@ Route::prefix("v1")->group(function () {
 
     Route::get("/comments", \App\Http\Controllers\Comments\IndexController::class);
     Route::get("/comments/{comment_id}", \App\Http\Controllers\Comments\ShowController::class);
+    Route::middleware("auth:sanctum")->group(function () {
+        Route::post("/comments", \App\Http\Controllers\Comments\StoreController::class);
+        Route::delete("/comments/{comment_id}", \App\Http\Controllers\Comments\DeleteController::class);
+        Route::patch("/comments/{comment_id}", \App\Http\Controllers\Comments\UpdateController::class);
+    });
 });

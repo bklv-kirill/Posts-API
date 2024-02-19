@@ -18,7 +18,7 @@ class CategoriesService
         return Category::filter($filter);
     }
 
-    public function categoryExistsAndIUserIsAdminCheck(Category|null $category): Response|bool
+    public function categoryExistsAndUserIsAdminCheck(Category|null $category): Response|bool
     {
         if (!$category)
             return response(["status" => false, "error" => "Category not found"], 400);

@@ -3,8 +3,10 @@
 namespace App\Providers;
 
 use App\Events\Categories\CategoriesChangedEvent;
+use App\Events\CommentsChangedEvent;
 use App\Events\Posts\PostsChangedEvent;
 use App\Listeners\Categories\CategoriesChangedListener;
+use App\Listeners\CommentsChangedListener;
 use App\Listeners\Posts\PostsChangedListener;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -27,6 +29,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         CategoriesChangedEvent::class => [
             CategoriesChangedListener::class
+        ],
+        CommentsChangedEvent::class => [
+            CommentsChangedListener::class
         ]
     ];
 
