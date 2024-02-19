@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Posts\StoreRequest;
 use App\Http\Resources\Post\PostResource;
 use App\Models\Post;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 
 class StoreController extends Controller
 {
@@ -21,6 +22,8 @@ class StoreController extends Controller
 
         if (isset($postData["categories"]))
             $post->addCategories($postData["categories"]);
+
+        $post->putOrUpdateCache();
 
         event(new PostsChangedEvent());
 

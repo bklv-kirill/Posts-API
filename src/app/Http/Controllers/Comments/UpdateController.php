@@ -25,6 +25,8 @@ class UpdateController extends Controller
 
         $comment->update($commentDate);
 
+        $comment->putOrUpdateCache();
+
         event(new CommentsChangedEvent());
 
         return new CommentResource($comment);

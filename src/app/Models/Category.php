@@ -22,6 +22,10 @@ class Category extends Model
     {
         return $this->belongsToMany(Post::class, "category_posts");
     }
+    public static function getCacheRelations(): array
+    {
+        return ["posts"];
+    }
 
     public function deletePosts()
     {

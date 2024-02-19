@@ -13,8 +13,8 @@ class ShowController extends Controller
      */
     public function __invoke($category_id)
     {
-        $category = Category::query()->with( ["posts"])->find($category_id);
+        $category = Category::getFromCache("categories", $category_id);
 
-        return $category ? new CategoryResource($category) : response(["date" => []], 200);
+        return $category ? new CategoryResource($category) : response(["status" => false, "error" => "Category not found"], 400);
     }
 }

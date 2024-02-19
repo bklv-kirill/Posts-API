@@ -8,6 +8,7 @@ use App\Http\Requests\Posts\UpdateRequest;
 use App\Http\Resources\Post\PostResource;
 use App\Http\Services\Posts\PostsService;
 use App\Models\Post;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 
 class UpdateController extends Controller
 {
@@ -25,6 +26,8 @@ class UpdateController extends Controller
         $post->update($postDate);
         if (isset($postDate["categories"]))
             $post->updateCategories($postDate["categories"]);
+
+        $post->putOrUpdateCache();
 
         event(new PostsChangedEvent());
 

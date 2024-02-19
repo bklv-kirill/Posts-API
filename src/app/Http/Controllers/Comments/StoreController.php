@@ -19,6 +19,8 @@ class StoreController extends Controller
 
         $comment = Comment::query()->create(array_merge(["user_id" => auth()->user()->id], $commentData));
 
+        $comment->putOrUpdateCache();
+
         event(new CommentsChangedEvent());
 
         return new CommentResource($comment);

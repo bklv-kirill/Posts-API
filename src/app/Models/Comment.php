@@ -29,4 +29,9 @@ class Comment extends Model
     {
         return $this->belongsTo(Post::class);
     }
+
+    public static function getCacheRelations(): array
+    {
+        return ["user", "post"];
+    }
 }

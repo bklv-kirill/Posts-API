@@ -19,7 +19,7 @@ class IndexController extends Controller
         $queryParams = $request->validated();
 
         if (count($queryParams)) $posts = $service->getFilteredData($queryParams);
-        else $posts = Post::getAllFromCache("posts", ["user", "categories", "comments" => fn (Builder $builder) => $builder->with(["user"])]);
+        else $posts = Post::getAllFromCache("posts");
 
         return PostResource::collection($posts);
     }

@@ -18,7 +18,7 @@ class IndexController extends Controller
         $queryParams = $request->validated();
 
         if (count($queryParams)) $comments = $service->getFilteredData($queryParams);
-        else $comments = Comment::getAllFromCache("comments", ["user", "post"]);
+        else $comments = Comment::getAllFromCache("comments");
 
         return CommentResource::collection($comments);
     }

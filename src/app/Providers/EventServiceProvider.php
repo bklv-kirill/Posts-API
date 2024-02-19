@@ -24,12 +24,15 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+
         PostsChangedEvent::class => [
             PostsChangedListener::class,
         ],
+
         CategoriesChangedEvent::class => [
             CategoriesChangedListener::class
         ],
+
         CommentsChangedEvent::class => [
             CommentsChangedListener::class
         ]

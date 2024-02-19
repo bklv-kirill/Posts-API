@@ -19,6 +19,7 @@ class DeleteController extends Controller
         if ($response = $service->categoryExistsAndUserIsAdminCheck($category))
             return $response;
 
+        $category->deleteFromCache();
         $category->delete();
 
         event(new CategoriesChangedEvent());

@@ -18,7 +18,7 @@ class IndexController extends Controller
         $queryParams = $request->validated();
 
         if (count($queryParams)) $categories = $service->getFilteredData($queryParams);
-        else $categories = Category::getAllFromCache("categories", ["posts"]);
+        else $categories = Category::getAllFromCache("categories");
 
         return CategoryResource::collection($categories);
     }

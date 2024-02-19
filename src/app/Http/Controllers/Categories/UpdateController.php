@@ -28,6 +28,8 @@ class UpdateController extends Controller
         if (isset($categoryData["posts"]))
             $category->updatePosts($categoryData["posts"]);
 
+        $category->putOrUpdateCache();
+
         event(new CategoriesChangedEvent());
 
         return new CategoryResource($category);

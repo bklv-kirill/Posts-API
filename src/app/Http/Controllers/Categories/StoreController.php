@@ -25,6 +25,8 @@ class StoreController extends Controller
         if (isset($categoryData["posts"]))
             $category->addPosts($categoryData["posts"]);
 
+        $category->putOrUpdateCache();
+
         event(new CategoriesChangedEvent());
 
         return new CategoryResource($category);

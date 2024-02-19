@@ -19,6 +19,7 @@ class DeleteController extends Controller
         if ($response = $service->commentExistsAndUserIsOwnerCheck($comment))
             return $response;
 
+        $comment->deleteFromCache();
         $comment->delete();
 
         event(new CommentsChangedEvent());

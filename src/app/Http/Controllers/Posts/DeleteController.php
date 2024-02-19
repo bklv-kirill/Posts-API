@@ -19,6 +19,8 @@ class DeleteController extends Controller
         if ($response = $service->postExistsAndUserIsOwnerCheck($post))
             return $response;
 
+        $post->deleteFromCache();
+
         $post->deleteCategories();
         $post->delete();
 

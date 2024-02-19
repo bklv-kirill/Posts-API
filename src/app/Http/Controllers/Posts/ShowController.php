@@ -14,8 +14,8 @@ class ShowController extends Controller
      */
     public function __invoke($post_id)
     {
-        $post = Post::query()->with(["user", "categories", "comments" => fn(Builder $builder) => $builder->with(["user"])])->find($post_id);
+        $post = Post::getFromCache("posts", $post_id);
 
-        return $post ? new PostResource($post) : response(["date" => []], 200);
+        return $post ? new PostResource($post) : response(["status" => false, "error" => "Post not found"], 400);
     }
 }
