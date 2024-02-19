@@ -1,0 +1,17 @@
+1. TERMINAL -> docker compose up -d nginx
+2. TERMINAL -> docker compose run --rm -it composer install
+3. TERMINAL -> docker exec -it php-container php artisan migrate --seed
+4. TERMINAL -> docker exec -it php-container php artisan btmseed:go
+
+8. MySQL:
+   - user: root
+   - password: root
+   - port: 3306
+   - env: ./mysql.env
+
+9. Redis:
+   - port: 6379
+
+10. PhpMyAdmin:
+   - port: 8080
+   - env: ./phpmyadmin.env
