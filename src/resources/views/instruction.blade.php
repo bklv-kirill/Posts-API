@@ -172,6 +172,42 @@
                 </li>
             </ul>
         </li>
+        <li>
+            POST
+            <ul>
+                <li><span class="text-primary">Route:</span> <span class="text-success">/comments</span>:
+                    <ul>
+                        <li><span class="text-danger">content:</span><span
+                                class="text-success"> Required, String, Min:3, Max:255</span>;
+                        </li>
+                        <li><span class="text-danger">post_id:</span><span
+                                class="text-success"> Required, Int, Exists:posts,id</span>;
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>
+            DELETE
+            <ul>
+                <li><span class="text-primary">Route:</span> <span class="text-success">/comments/</span><span
+                        class="text-danger">comment_id</span>;
+                </li>
+            </ul>
+        </li>
+        <li>
+            PATCH
+            <ul>
+                <li><span class="text-primary">Route:</span> <span class="text-success">/comments/</span><span
+                        class="text-danger">comment_id</span>:
+                    <ul>
+                        <li><span class="text-danger">content:</span><span
+                                class="text-success"> Required, String, Min:3, Max:255</span>;
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
     </ul>
     <hr>
     <h2>User:</h2>

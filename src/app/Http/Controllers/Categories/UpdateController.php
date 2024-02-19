@@ -24,7 +24,7 @@ class UpdateController extends Controller
             return $response;
 
         $category->update($categoryData);
-        
+
         if (isset($categoryData["posts"]))
             $category->updatePosts($categoryData["posts"]);
 
